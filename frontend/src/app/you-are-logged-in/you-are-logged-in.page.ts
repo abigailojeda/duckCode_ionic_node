@@ -25,11 +25,11 @@ export class YouAreLoggedInPage implements OnInit {
   async getMotorbikes() {
     let token = await this.storage.get("token");
     this.motorbikeService.getMotorbikes(token).subscribe(res => {
-      console.log("User Logged in. This is the motorbike list:");
-      console.log(res);
+     // console.log("User Logged in. This is the motorbike list:");
+     // console.log(res);
     }, error => {
-      console.log(error);
-      console.log("User not authenticated. Please log in");
+     // console.log(error);
+      //console.log("User not authenticated. Please log in");
       this.router.navigateByUrl("/home");
     });
   }

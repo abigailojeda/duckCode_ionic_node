@@ -28,7 +28,7 @@ export class MotorbikeService {
 
   getMotorbikes(token) {
     let myOptions = this.getOptions(token);
-    console.log(myOptions)
+    //console.log(myOptions)
     return this.httpClient.get(`${this.AUTH_SERVER_ADDRESS}/api/motorbikes`, myOptions);
   }
 }

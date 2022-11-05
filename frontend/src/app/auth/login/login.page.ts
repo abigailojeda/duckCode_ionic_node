@@ -5,7 +5,7 @@ import { YouAreLoggedInPageRoutingModule } from 'src/app/you-are-logged-in/you-a
 import { AuthService } from '../auth.service';
 import { User } from '../user';
 import { UserService } from '../../services/user.service';
-
+import { MenuController } from '@ionic/angular';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -19,10 +19,13 @@ export class LoginPage implements OnInit {
     private router: Router, 
     private authService: AuthService, 
     private alertController: AlertController,
-    private UserService: UserService) { }
+    private UserService: UserService,
+    private menu: MenuController) { }
 
   ngOnInit() {
     this.showPass=false;
+    localStorage.setItem('visibleOn', 'auth')
+    this.hideMenu()
   }
 
   login(form){
@@ -61,5 +64,9 @@ export class LoginPage implements OnInit {
 
   public tooglePass(){
     this.showPass = !this.showPass;
+  }
+
+  public hideMenu(){
+    this.menu.enable(false);
   }
 }

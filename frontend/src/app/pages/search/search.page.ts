@@ -6,7 +6,7 @@ import { AuthService } from '../../auth/auth.service';
 import { UserService } from '../../services/user.service';
 import { ViewChild } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
-// import { Slides } from 'ionic-angular';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-search',
@@ -25,28 +25,31 @@ export class SearchPage implements OnInit {
     private router: Router,
     private motorbikeService: MotorbikeService,
     private storage: Storage,
-    private UserService: UserService) { }
+    private UserService: UserService,
+    private menu: MenuController) { }
 
     ngOnInit() {
       this.getAllUsers();
       this.userStorage = this.UserService.userStorage;
-    
+      localStorage.setItem('visibleOn', 'search')
+      this.showMenu()
     }
   
     ionViewDidEnter(){
       this.getAllUsers();
+      localStorage.setItem('visibleOn', 'search')
     }
   async getAllUsers() {
     let token = await this.storage.get("token");
     this.UserService.getUsers(token).subscribe(res => {
-      console.log("User Logged in. This is the motorbike list:");
-      console.log(res);
+      // console.log("User Logged in. This is the motorbike list:");
+      // console.log(res);
       if(res){
         this.setUsers(res);
       }
     }, error => {
-      console.log(error);
-      console.log("User not authenticated. Please log in");
+      // console.log(error);
+      // console.log("User not authenticated. Please log in");
       this.router.navigateByUrl("/login");
     });
   }
@@ -69,6 +72,9 @@ export class SearchPage implements OnInit {
     this.slides.slideTo(2, 500);
   }
 
+  public showMenu(){
+    this.menu.enable(true);
+  }
 
 
 }

@@ -1,4 +1,8 @@
-
+<ion-menu
+[type]="menuType"
+side="start"
+contentId="lala"
+>
 
 <ion-header>
   <ion-toolbar class="menu-title">
@@ -7,28 +11,24 @@
 </ion-header>
 
 <ion-content
-  class="ion-padding "
+  class="ion-padding menu-content"
   scroll-y="false"
 >
 
   <ion-list>
+    <ion-item routerLink="/search" >
+      <ion-icon  slot="start" name="search-outline"></ion-icon>
+      <ion-label >Buscador</ion-label>
+    </ion-item>
 
-   
-      <ion-menu-toggle *ngFor="let option of menuOptions"  >
-        <ion-item [routerLink]="option.path" >
-          <ion-icon  slot="start" [name]="option.icon"></ion-icon>
-          <ion-label>{{option.value}}</ion-label>
-        </ion-item>
-      </ion-menu-toggle>
-
-    <ion-item (click)="logout()" class="logout">
+    <ion-item (click)="logout()">
       <ion-icon slot="start" name="power-outline"></ion-icon>
       <ion-label>Cerrar sesión</ion-label>
     </ion-item>
   </ion-list>
 </ion-content>
 
-<ion-footer class="menu-footer">
+<ion-footer >
   <ion-toolbar class="menu-title">
     <ion-img
       src="/assets/img/duck_code_logo_color.svg"
@@ -36,6 +36,7 @@
     ></ion-img>
   </ion-toolbar>
 </ion-footer>
+</ion-menu>
 
 
-
+<ion-router-outlet id="lala"></ion-router-outlet>

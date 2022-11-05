@@ -6,7 +6,26 @@ import { ProfilePage } from './profile.page';
 const routes: Routes = [
   {
     path: '',
-    component: ProfilePage
+    component: ProfilePage,
+    children:[
+      {
+        path: 'personal',
+        loadChildren: () => import('./personal-data/personal-data.module').then( m => m.PersonalDataPageModule),
+      },
+      {
+        path: 'job',
+        loadChildren: () => import('./job-profile/job-profile.module').then( m => m.JobProfilePageModule),
+      }
+      
+    ]
+  },
+  {
+    path: 'personal-data',
+    loadChildren: () => import('./personal-data/personal-data.module').then( m => m.PersonalDataPageModule)
+  },
+  {
+    path: 'job-profile',
+    loadChildren: () => import('./job-profile/job-profile.module').then( m => m.JobProfilePageModule)
   }
 ];
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private menu: MenuController
+    
+  ) { }
 
   ngOnInit() {
+    localStorage.setItem('visibleOn', 'profile')
+    this.showMenu()
+
+  }
+
+  ionViewDidEnter(){
+    localStorage.setItem('visibleOn', 'profile')
+  }
+  public showMenu(){
+    this.menu.enable(true);
   }
 
 }

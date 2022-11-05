@@ -43,7 +43,7 @@ export class UserService {
 
   getUsers(token) {
     let myOptions = this.getOptions(token);
-    console.log(myOptions)
+    //console.log(myOptions)
     return this.httpClient.get(`${this.AUTH_SERVER_ADDRESS}/api/users`, myOptions);
 
 

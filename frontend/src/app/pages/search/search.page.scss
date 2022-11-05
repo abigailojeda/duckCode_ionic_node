@@ -1,7 +1,6 @@
 .body-content{
     --background:#F5F5F5;
 
-    
 }
 
 ion-item, ion-list {
@@ -13,15 +12,7 @@ ion-list{
 }
 
 
-ion-menu::part(backdrop) {
-    background-color: #c3c2ff;
-  }
-  
-  ion-menu::part(container) {
-    border-radius: 0 20px 20px 0;
-  
-    box-shadow: 4px 0px 16px rgba(53, 34, 53, 0.18);
-  }
+
 
   ion-slides{
     height: 100%;
