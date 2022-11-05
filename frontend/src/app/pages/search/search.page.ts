@@ -69,11 +69,6 @@ export class SearchPage implements OnInit {
     this.slides.slideTo(2, 500);
   }
 
-  getUserName(){
-    let username;
-    username=this.userStorage.currentUser.username;
-    console.log('username:',username)
-    return username;
-  }
+
 
 }

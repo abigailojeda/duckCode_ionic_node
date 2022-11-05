@@ -5,6 +5,7 @@ import { tap } from  'rxjs/operators';
 import { AuthResponse } from './auth-response';
 import { User } from './user';
 import { Storage } from '@ionic/storage';
+import { UserService } from '../services/user.service';
 
 
 @Injectable({
@@ -14,7 +15,7 @@ export class AuthService {
 
   AUTH_SERVER_ADDRESS:  string  =  'http://localhost:4000';
 
-  constructor(private  httpClient:  HttpClient, private  storage:  Storage) { }
+  constructor(private  httpClient:  HttpClient, private  storage:  Storage, private UserService: UserService) { }
 
   private getOptions(user: User){
     let base64UserAndPassword = window.btoa(user.username + ":" + user.password);
@@ -59,6 +60,8 @@ export class AuthService {
 
   async logout() {
     await this.storage.remove("token");
+     localStorage.removeItem('currentUser');
+    this.UserService.setCurrentUser({})
   }
 
   async isLoggedIn() {

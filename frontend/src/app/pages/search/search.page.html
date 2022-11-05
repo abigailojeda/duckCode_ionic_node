@@ -1,53 +1,7 @@
 <ion-app>
-  <ion-menu
-    [type]="menuType"
-    side="start"
-    contentId="first"
-  >
-    <!-- <ion-content class="ion-padding">
-    <h1>Content</h1>
-  </ion-content> -->
-    <!-- <ion-footer>
-    <ion-toolbar>
-      <ion-img
-      src="/assets/img/duck_code_logo_color.svg"
-      alt="DuckCode"
-    ></ion-img>
-    </ion-toolbar>
-  </ion-footer> -->
 
-    <ion-header>
-      <ion-toolbar class="menu-title">
-        <ion-title>¡Hola <b class="username">{{getUserName()}}</b>!</ion-title>
-      </ion-toolbar>
-    </ion-header>
-
-    <ion-content
-      class="ion-padding menu-content"
-      scroll-y="false"
-    >
-      <ion-list>
-        <ion-item>
-          <ion-icon slot="start" name="person-outline"></ion-icon>
-          <ion-label>Ir al perfil</ion-label>
-        </ion-item>
-
-        <ion-item>
-          <ion-icon slot="start" name="power-outline"></ion-icon>
-          <ion-label>Cerrar sesión</ion-label>
-        </ion-item>
-      </ion-list>
-    </ion-content>
-
-    <ion-footer>
-      <ion-toolbar class="menu-title">
-        <ion-img
-          src="/assets/img/duck_code_logo_color.svg"
-          alt="DuckCode"
-        ></ion-img>
-      </ion-toolbar>
-    </ion-footer>
-  </ion-menu>
+  <app-menu></app-menu>
+ 
 
   <ion-header [translucent]="true">
     <ion-toolbar class="toolbar-top">
@@ -69,17 +23,9 @@
   <ion-content class="body-content">
     <ion-slides pager="true">
       <ion-slide *ngFor="let slide of results; let i = index">
-        <ion-avatar slot="start">
-          <img
-            alt="Silhouette of a person's head"
-            src="/assets/img/users/no-photo.png"
-          >
-
-          <h1>{{i}}</h1>
-        </ion-avatar>
+       <app-user-card [index]="i"></app-user-card>
       </ion-slide>
     </ion-slides>
   </ion-content>
 
-  <ion-router-outlet id="first"></ion-router-outlet>
 </ion-app>
